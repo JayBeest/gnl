@@ -1,17 +1,21 @@
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32 
-#endif
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
 
 # include <stdlib.h>
 
 typedef struct  gnl_struc
 {
     int     			fd;
+    void 				*prev_list;
+    int                 bytes_read;
+    int                 hasnl;
     char    			*leftover;
-	char				*lo_ptr;
+	char				*ln_ptr;
+	char 				*lo_ptr;
 	struct gnl_struc	*next;
 }               				gnl_struct;
 

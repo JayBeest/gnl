@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   get_next_line_utils.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jcorneli <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/16 11:45:13 by jcorneli      #+#    #+#                 */
+/*   Updated: 2021/01/21 00:46:02 by jcorneli      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** 1. Compile with -D MALLOC_DEBUG to make malloc fail
 ** 2. set M_ERR to the value of which malloc you want to fail (1 = first malloc fails)
