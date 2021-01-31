@@ -52,4 +52,6 @@ Mkfile.old
 dkms.conf
 
 .vscode/
+42TESTER-GNL/
 gnl
+*.txt

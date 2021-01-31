@@ -6,20 +6,18 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/16 11:33:13 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/01/31 16:20:05 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/01/31 18:25:09 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <unistd.h>
 
-#include <stdio.h>
-
-static int			freedom(gnl_struct **gnls, int rv)
+static int			freedom(t_gnl **gnls, int rv)
 {
-	gnl_struct			*cur_list;
-	gnl_struct			*prev_list;
-	gnl_struct			*next_list;
+	t_gnl			*cur_list;
+	t_gnl			*prev_list;
+	t_gnl			*next_list;
 
 	cur_list = *gnls;
 	prev_list = cur_list->prev_list;
@@ -41,12 +39,12 @@ static int			freedom(gnl_struct **gnls, int rv)
 	return (1);
 }
 
-static gnl_struct	*new_fd(int fd, gnl_struct *prev_list,\
-					gnl_struct **gnlstatic)
+static t_gnl		*new_fd(int fd, t_gnl *prev_list,\
+					t_gnl **gnlstatic)
 {
-	gnl_struct			*new;
+	t_gnl			*new;
 
-	new = (gnl_struct *)malloc(sizeof(gnl_struct));
+	new = (t_gnl *)malloc(sizeof(t_gnl));
 	if (new)
 	{
 		new->fd = fd;
@@ -67,9 +65,9 @@ static gnl_struct	*new_fd(int fd, gnl_struct *prev_list,\
 	return (NULL);
 }
 
-static gnl_struct	*get_fd(gnl_struct **gnlstatic, int fd)
+static t_gnl		*get_fd(t_gnl **gnlstatic, int fd)
 {
-	gnl_struct			*node;
+	t_gnl			*node;
 
 	node = *gnlstatic;
 	if (!node)
@@ -88,7 +86,7 @@ static gnl_struct	*get_fd(gnl_struct **gnlstatic, int fd)
 	return (NULL);
 }
 
-static int			check_nl(char *buff, char **ln, gnl_struct *gnls)
+static int			check_nl(char *buff, char **ln, t_gnl *gnls)
 {
 	int					i;
 
@@ -119,9 +117,9 @@ static int			check_nl(char *buff, char **ln, gnl_struct *gnls)
 
 int					get_next_line(int fd, char **line)
 {
-	char				buffer[BUFFER_SIZE + 1];
-	gnl_struct			*gnls;
-	static gnl_struct	*gnlstatic;
+	char			buffer[BUFFER_SIZE + 1];
+	t_gnl			*gnls;
+	static t_gnl	*gnlstatic;
 
 	if (!gnlstatic)
 		gnlstatic = new_fd(fd, NULL, &gnlstatic);

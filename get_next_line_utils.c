@@ -5,16 +5,16 @@
 /*                                                     +:+                    */
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/12/16 11:45:13 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/01/21 00:46:02 by jcorneli      ########   odam.nl         */
+/*   Created: 2021/01/31 19:13:54 by jcorneli      #+#    #+#                 */
+/*   Updated: 2021/01/31 19:13:57 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifdef MALLOC_DEBUG
 # include <stdlib.h>
-#ifndef M_ERR
-# define M_ERR
-#endif
+# ifndef M_ERR
+#  define M_ERR
+# endif
 int m_cnt = 1;
 # define malloc(x) (m_cnt++ == M_ERR ? ((void*)0) : malloc(x))
 #endif
