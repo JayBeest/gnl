@@ -13,14 +13,14 @@ int main(int argc, char **argv)
 
     fd = 0;
     fd2 = 0;
+	//retry_from_start:
     rv = 1;
     rv2 = 1;
     line = NULL;
-//	retry_from_start:
     if (argc == 1)
     {
-        fd = open("./kort.txt", O_RDONLY);
-        fd2 = open("./kort2.txt", O_RDONLY);
+        fd = open("empty", O_RDONLY);
+        fd2 = open("alphabet", O_RDONLY);
     }
     else if (argc == 2)
 	{
@@ -41,15 +41,29 @@ int main(int argc, char **argv)
 	}
 	while (1)
 	{
-		if (rv != 0)
+		if (rv > 0)
 		{
 			rv = get_next_line(fd, &line);
+			if (rv == -1)
+			{
+				printf("rv1: -1\n");
+				break ;
+			}
 			printf("rv1: %d,  ->%s|\n", rv, line);
 			free(line);
 		}
-		if (rv2 != 0)
+		if (rv == 0)
+		{
+
+		}
+		if (rv2 > 0)
 		{
 			rv2 = get_next_line(fd2, &line);
+			if (rv2 == -1)
+			{
+				printf("rv1: -1\n");
+				break;
+			}
 			printf("rv2: %d,  ->%s|\n", rv2, line);
 			free(line);
 		}
@@ -64,8 +78,11 @@ int main(int argc, char **argv)
 		if (!rv && !rv2)
 			break ;
 	}
+
     close(fd);
-	while (1)
-	{}
+	close(fd2);
+	//goto retry_from_start;
+//	while (1)
+//	{}
     return (0);
 }

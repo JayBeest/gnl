@@ -10,19 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** 1. Compile with -D MALLOC_DEBUG to make malloc fail
-** 2. set M_ERR to the value of which malloc you want to fail (1 = first malloc fails)
-*/
 #ifdef MALLOC_DEBUG
 # include <stdlib.h>
 #ifndef M_ERR
-# define M_ERR 10
+# define M_ERR
 #endif
 int m_cnt = 1;
-# define malloc(x) ((m_cnt++ % M_ERR) == 0 ? ((void*)0) : malloc(x))
+# define malloc(x) (m_cnt++ == M_ERR ? ((void*)0) : malloc(x))
 #endif
-
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
