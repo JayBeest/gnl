@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     if (argc == 1)
     {
         fd = open("empty", O_RDONLY);
-        fd2 = open("alphabet", O_RDONLY);
+        fd2 = open("empty", O_RDONLY);
     }
     else if (argc == 2)
 	{
@@ -47,6 +47,7 @@ int main(int argc, char **argv)
 			if (rv == -1)
 			{
 				printf("rv1: -1\n");
+				free(line);
 				break ;
 			}
 			printf("rv1: %d,  ->%s|\n", rv, line);
@@ -62,6 +63,7 @@ int main(int argc, char **argv)
 			if (rv2 == -1)
 			{
 				printf("rv1: -1\n");
+				free (line);
 				break;
 			}
 			printf("rv2: %d,  ->%s|\n", rv2, line);
@@ -82,7 +84,7 @@ int main(int argc, char **argv)
     close(fd);
 	close(fd2);
 	//goto retry_from_start;
-//	while (1)
-//	{}
+	while (1)
+	{}
     return (0);
 }
