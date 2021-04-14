@@ -17,7 +17,7 @@
 # endif
 # include <stdlib.h>
 
-typedef struct	s_gnl
+typedef struct s_gnl
 {
 	int					fd;
 	int					bytes_read;
