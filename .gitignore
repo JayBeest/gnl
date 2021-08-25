@@ -56,9 +56,10 @@ dkms.conf
 gnl
 *.txt
 .DS_Store
-	.idea/
-	42TESTERS-GNL/
-	Get_Next_Line_Tester/
-	get_next_line_bonus.c
-	get_next_line_utils_bonus.c
-	gnl_unit_tests/
+.idea/
+42TESTERS-GNL/
+Get_Next_Line_Tester/
+get_next_line_bonus.c
+get_next_line_utils_bonus.c
+gnl_unit_tests/
+
