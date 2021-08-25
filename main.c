@@ -55,20 +55,20 @@ int main(int argc, char **argv)
 		}
 		if (rv == 0)
 		{
-
+			break ;
 		}
-		if (rv2 > 0)
-		{
-			rv2 = get_next_line(fd2, &line);
-			if (rv2 == -1)
-			{
-				printf("rv1: -1\n");
-				free (line);
-				break;
-			}
-			printf("rv2: %d,  ->%s|\n", rv2, line);
-			free(line);
-		}
+//		if (rv2 > 0)
+//		{
+//			rv2 = get_next_line(fd2, &line);
+//			if (rv2 == -1)
+//			{
+//				printf("rv1: -1\n");
+//				free (line);
+//				break;
+//			}
+//			printf("rv2: %d,  ->%s|\n", rv2, line);
+//			free(line);
+//		}
 //        while (1)
 //		{}
 
@@ -77,14 +77,14 @@ int main(int argc, char **argv)
 		// 	close(fd);
 		// 	goto retry_from_start;
 		// }
-		if (!rv && !rv2)
-			break ;
+//		if (!rv && !rv2)
+//			break ;
 	}
 
     close(fd);
-	close(fd2);
+//	close(fd2);
 	//goto retry_from_start;
-	while (1)
-	{}
+//	while (1)
+//	{}
     return (0);
 }
